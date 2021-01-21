@@ -48,6 +48,7 @@ EOF
 
 kas-docker build kas-layers-xilinx-rel-v2020.1.yml --target "virtual/fsbl"
 kas-docker build kas-layers-xilinx-rel-v2020.1.yml --target "virtual/device-tree"
+kas-docker build kas-layers-xilinx-rel-v2020.1.yml --target "core-image-base"
 
 ################################################################################
 exit 0
