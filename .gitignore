@@ -8,3 +8,4 @@
 /downloads/**
 /sstate-cache
 /sstate-cache/**
+/build*/**
