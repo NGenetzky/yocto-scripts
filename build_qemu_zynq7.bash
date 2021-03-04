@@ -7,9 +7,10 @@ set -eu -o pipefail
 
 MACHINE='qemu-zynq7'
 
-builddir="build-${MACHINE}"
+builddir="build"
+# builddir="build-${MACHINE}"
 mkdir -p "${builddir}"
-ln -sfT "${builddir}" "build"
+# ln -sfT "${builddir}" "build"
 mkdir -p "${builddir}/conf/"
 
 # https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18841671/Using+meta-xilinx-tools+layer
@@ -47,9 +48,15 @@ EOF
 # bitbake virtual/fsbl
 
 
-kas-docker build kas/kas-xilinx-rel-v2020.1.yml --target "virtual/fsbl"
-kas-docker build kas/kas-xilinx-rel-v2020.1.yml --target "virtual/device-tree"
-kas-docker build kas/kas-xilinx-rel-v2020.1.yml --target "core-image-base"
+set +e
+set +x
+# kas-docker build kas/kas-xilinx-rel-v2020.1.yml --target "virtual/fsbl"
+# kas-docker build kas/kas-xilinx-rel-v2020.1.yml --target "virtual/device-tree"
+# kas-docker build kas/kas-xilinx-rel-v2020.1.yml --target "core-image-base"
+
+kas-docker build kas/kas-xilinx-rel-v2020.1.yml --target "petalinux-image-full"
+kas-docker build kas/kas-xilinx-rel-v2020.1.yml --target "xsct-tarball-esdk"
+
 
 ################################################################################
 exit 0
